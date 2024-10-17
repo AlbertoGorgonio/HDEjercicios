@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
+        /* Fondo con un degradado suave */
         body {
-            background-color: #f0f2f5;
+            background: linear-gradient(135deg, #f0f4ff, #dff0e7);
             font-family: 'Arial', sans-serif;
             display: flex;
             justify-content: center;
@@ -55,12 +56,12 @@
 
         input, select {
             width: 100%;
-            padding: 12px 40px; /* Ajuste para íconos */
+            padding: 12px 40px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1em;
             transition: border-color 0.3s ease;
-            box-sizing: border-box; /* Para evitar desbordamiento */
+            box-sizing: border-box;
         }
 
         input:focus, select:focus {

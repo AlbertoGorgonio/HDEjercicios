@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
+        /* Fondo con un degradado suave */
         body {
-            background-color: #f9f9f9;
+            background: linear-gradient(135deg, #f0f4ff, #dff0e7);
             font-family: Arial, sans-serif;
             display: flex;
             justify-content: center;
@@ -16,25 +17,29 @@
             height: 100vh;
             margin: 0;
         }
+
         .result-container {
             background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
             width: 400px;
             text-align: center;
         }
+
         h1 {
             margin-bottom: 20px;
-            font-size: 1.5em;
+            font-size: 1.8em;
             color: #333;
         }
+
         ul {
             list-style-type: none;
             padding: 0;
             margin-bottom: 20px;
             text-align: left;
         }
+
         li {
             padding: 10px;
             display: flex;
@@ -42,10 +47,12 @@
             align-items: center;
             border-bottom: 1px solid #ddd;
         }
+
         .juguete-info {
             display: flex;
             align-items: center;
         }
+
         .juguete-info img {
             width: 50px;
             height: 50px;
@@ -53,17 +60,24 @@
             margin-right: 10px;
             border-radius: 4px;
         }
+
+        input[type="checkbox"] {
+            margin-left: 10px;
+            transform: scale(1.2);
+        }
+
         button {
             width: 100%;
-            padding: 10px;
+            padding: 12px;
             background-color: #5cb85c;
             border: none;
-            border-radius: 4px;
+            border-radius: 8px;
             color: #fff;
-            font-size: 1em;
+            font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s;
         }
+
         button:hover {
             background-color: #4cae4c;
         }

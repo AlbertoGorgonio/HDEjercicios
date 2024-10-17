@@ -9,9 +9,7 @@ Route::get('/', function () {
     return view('formulario');
 });
 
-
 Route::post('/filtrar', function (Request $request) {
-    
     $nombre = $request->input('nombre');
     $correo = $request->input('correo');
     $genero = $request->input('genero');
@@ -29,16 +27,23 @@ Route::post('/enviar-recomendacion', function (Request $request) {
         return back()->with('error', 'Por favor selecciona al menos un juguete.');
     }
 
-    $juguetes = Juguete::whereIn('id', $juguetes_ids)->get(['nombre', 'precio']);
+    $juguetes = Juguete::whereIn('id', $juguetes_ids)->get(['nombre', 'precio', 'imagen']);
 
-    $contenidoCorreo = "Estos son los juguetes recomendados:\n\n";
+    $contenidoCorreo = "<h1>Estos son los juguetes recomendados:</h1><ul>";
     foreach ($juguetes as $juguete) {
-        $contenidoCorreo .= $juguete->nombre . " - $" . number_format($juguete->precio, 2) . "\n";
-    }
+        $contenidoCorreo .= "<li>";
+        $contenidoCorreo .= "<strong>" . $juguete->nombre . " - $" . number_format($juguete->precio, 2) . "</strong><br>";
 
-    Mail::raw($contenidoCorreo, function($message) use ($correo) {
+            $imagenUrl = url('images/' . $juguete->imagen);
+       $contenidoCorreo .= "<img src='" . $imagenUrl . "' alt='" . $juguete->nombre . "' style='width:100px;height:100px;'><br>";
+        $contenidoCorreo .= "</li>";
+    }
+    $contenidoCorreo .= "</ul>";
+
+    Mail::send([], [], function ($message) use ($correo, $contenidoCorreo) {
         $message->to($correo)
-                ->subject('Recomendación de Juguetes');
+                ->subject('Recomendación de Juguetes')
+                ->html($contenidoCorreo);
     });
 
     return redirect('/')->with('success', '¡Revisa tu correo electrónico para ver las recomendaciones!');
