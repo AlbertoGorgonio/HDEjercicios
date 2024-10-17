@@ -46,9 +46,12 @@
             display: flex;
             align-items: center;
         }
-        .juguete-info i {
+        .juguete-info img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
             margin-right: 10px;
-            color: #ffbb33;
+            border-radius: 4px;
         }
         button {
             width: 100%;
@@ -76,7 +79,7 @@
                 @foreach ($juguetes as $juguete)
                     <li>
                         <div class="juguete-info">
-                            <i class="fas fa-cube"></i>
+                            <img src="{{ asset('images/' . $juguete->imagen) }}" alt="{{ $juguete->nombre }}">
                             <span>{{ $juguete->nombre }} - ${{ number_format($juguete->precio, 2) }}</span>
                         </div>
                         <input type="checkbox" name="juguetes[]" value="{{ $juguete->id }}">
