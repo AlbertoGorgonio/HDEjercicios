@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Formulario de Juguetes</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}"> <!-- Enlaza archivo CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
     <style>
         body {
             background-color: #f0f2f5;
@@ -16,6 +16,7 @@
             height: 100vh;
             margin: 0;
             padding: 0;
+            position: relative;
         }
 
         .form-container {
@@ -41,11 +42,12 @@
         .input-group {
             margin-bottom: 20px;
             position: relative;
+            text-align: left;
         }
 
         .input-group i {
             position: absolute;
-            left: 10px;
+            left: 12px;
             top: 50%;
             transform: translateY(-50%);
             color: #888;
@@ -53,11 +55,12 @@
 
         input, select {
             width: 100%;
-            padding: 12px 40px 12px 40px;
+            padding: 12px 40px; /* Ajuste para íconos */
             border: 1px solid #ddd;
             border-radius: 8px;
             font-size: 1em;
             transition: border-color 0.3s ease;
+            box-sizing: border-box; /* Para evitar desbordamiento */
         }
 
         input:focus, select:focus {
@@ -87,6 +90,12 @@
             border: 1px solid transparent;
             border-radius: 4px;
             text-align: center;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            max-width: 600px;
         }
 
         .alert-success {
@@ -103,7 +112,6 @@
     </style>
 </head>
 <body>
-
 
     @if (session('success'))
         <div class="alert alert-success">
